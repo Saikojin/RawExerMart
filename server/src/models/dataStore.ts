@@ -1,4 +1,4 @@
-import { EquipmentItem, CreateEquipmentDTO, EquipmentCategory, EquipmentCondition } from './types.js';
+import { EquipmentItem, CreateEquipmentDTO } from './types.js';
 import { initialEquipmentData } from '../data/dummyEquipment.js';
 
 export class EquipmentDataStore {

@@ -100,3 +100,15 @@ In Michael Leonard's article, the core story used to illustrate the Story Test P
   - Implemented `EquipmentDataStore` in `server/src/models/dataStore.ts` with in-memory persistence, filtering by category and condition, search indexing, sorting, and state reset capabilities for automated testing.
 - **Verification:** Data store successfully clones seed data and satisfies type contracts.
 
+### Phase 3: Backend REST Services & Marketplace Price Aggregator
+- **Decision:** Architect the backend with decoupled services, pure calculation engines, and full simulation switches to prove Michael Leonard's Story Test Plan scenarios (EX-104 Scenario 1 & 2).
+- **Git Branch:** `feature/ex-103-backend-api-services`
+- **Actions Taken:**
+  - Implemented `calculateComparisonMetrics` pure function in `server/src/services/marketplaceComparisonService.ts` to compute lowest price flags, savings vs MSRP, and savings vs highest competitor.
+  - Built `MarketplaceComparisonService` with support for `simulateFailure` and `simulatedDelayMs` options.
+  - Created input validator `validateCreateEquipment` in `server/src/services/equipmentValidation.ts` to strictly sanitize user listings.
+  - Implemented controllers & routes for `/api/equipment` (CRUD + reset) and `/api/marketplaces/compare/:id`.
+  - Configured Express app with CORS and health-check endpoints.
+- **Verification:** Passed `npx tsc --noEmit` with zero errors and validated REST interface signatures.
+
+

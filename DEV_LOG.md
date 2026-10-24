@@ -128,5 +128,23 @@ In Michael Leonard's article, the core story used to illustrate the Story Test P
   - Implemented `StoryTestPlanDashboard` providing an interactive in-app view of Michael Leonard's test plan template and BDD acceptance criteria.
 - **Verification:** Production bundle built via `vite build client` in 1.74s with zero errors.
 
+### Phase 5: Multi-Tier Test Suite Implementation (Unit, Integration, Journey)
+- **Decision:** Faithfully implement Michael Leonard's three-tier agile test plan structure across unit, integration, and journey/component layers, covering all acceptance criteria of Story EX-104 (Price Comparison Across External Marketplaces).
+- **Git Branch:** `feature/ex-105-story-test-plan-coverage`
+- **Actions Taken:**
+  - **Tier 1 (Unit):**
+    - `tests/unit/priceComparison.test.ts`: Verified price sorting, lowest offer identification (both ExerMart internal and external competitor winners), MSRP difference calculations, and zero-listing safety.
+    - `tests/unit/conditionHelper.test.ts`: Verified badge styling and descriptions across all 5 conditions (`new`, `used_like_new`, `used_good`, `used_fair`, `refurbished`) plus USD currency formatters.
+    - `tests/unit/equipmentValidation.test.ts`: Enforced mandatory field boundaries (title, brand, valid condition, valid category, positive price, description length).
+  - **Tier 2 (Integration):**
+    - `tests/integration/equipmentApi.test.ts`: Tested Express REST routes with Supertest (`GET /api/equipment`, category filters, condition filters, search query, single item `GET /:id`, 404 handler, and `POST /api/equipment` listing creation).
+    - `tests/integration/marketplaceComparisonApi.test.ts`: Tested Story EX-104 Scenario 1 (live vendor aggregation) and Scenario 2 (graceful fallback mode with non-intrusive warning).
+  - **Tier 3 (Journey / Component):**
+    - `tests/journey/browseAndFilterJourney.test.tsx`: Tested user catalog navigation, condition badge checks, and card selection.
+    - `tests/journey/priceComparisonJourney.test.tsx`: Verified live comparison matrix rendering, lowest price badge, and interactive toggling of the Scenario 2 vendor failure simulation.
+    - `tests/journey/sellListingJourney.test.tsx`: Tested full listing submission workflow with real-time validation error handling.
+- **Verification:** All 40 tests across 8 test suites passed in 1.29s (`npm test`).
+
+
 
 

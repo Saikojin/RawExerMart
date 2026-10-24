@@ -89,3 +89,14 @@ In Michael Leonard's article, the core story used to illustrate the Story Test P
   - Initialized git branch.
   - Formulated architecture plan and test specifications.
   - Drafted comprehensive DEV_LOG.
+  - Configured Vitest test runner and verified execution pipeline.
+
+### Phase 2: Domain Modeling & Rich Dummy Data Generation
+- **Decision:** Model the equipment domain with strong TypeScript types differentiating condition nuances (`new`, `used_like_new`, `used_good`, `used_fair`, `refurbished`) and categories (free weights, power racks/benches, cardio machines, selectorized units, accessories).
+- **Git Branch:** `feature/ex-102-domain-dummy-data`
+- **Actions Taken:**
+  - Designed `server/src/models/types.ts` with complete domain schemas for items, DTOs, external price records, and price comparison summaries.
+  - Generated rich seed inventory in `server/src/data/dummyEquipment.ts` with 10 detailed pieces of commercial and garage gym equipment across top brands (Rogue, Rep Fitness, Concept2, Eleiko, Woodway, Hammer Strength, Nuobell, Titan).
+  - Implemented `EquipmentDataStore` in `server/src/models/dataStore.ts` with in-memory persistence, filtering by category and condition, search indexing, sorting, and state reset capabilities for automated testing.
+- **Verification:** Data store successfully clones seed data and satisfies type contracts.
+

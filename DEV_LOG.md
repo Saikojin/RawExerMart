@@ -145,6 +145,34 @@ In Michael Leonard's article, the core story used to illustrate the Story Test P
     - `tests/journey/sellListingJourney.test.tsx`: Tested full listing submission workflow with real-time validation error handling.
 - **Verification:** All 40 tests across 8 test suites passed in 1.29s (`npm test`).
 
+### Phase 6: Documentation, Integration & Main Branch Merge
+- **Decision:** Consolidate the entire project history, author comprehensive developer documentation (`README.md`, `docs/STORY_TEST_PLAN_EX104.md`), merge all feature branches back into `main`, and push the release to GitHub.
+- **Git Branch:** `feature/ex-106-docs-and-final-integration`
+- **Actions Taken:**
+  - Authored production-grade `README.md` with complete architectural diagram, feature walkthrough, running guide, and test commands.
+  - Completed `DEV_LOG.md` retrospectives and workflow evaluations.
+  - Merged feature branches (`feature/ex-101-project-scaffold`, `feature/ex-102-domain-dummy-data`, `feature/ex-103-backend-api-services`, `feature/ex-104-frontend-showcase-marketplace`, `feature/ex-105-story-test-plan-coverage`, and `feature/ex-106-docs-and-final-integration`) into `main`.
+  - Pushed all branches and `main` to GitHub repository: `https://github.com/Saikojin/RawExerMart`.
+- **Verification:** Clean git log history, 100% test pass rate, and full bundle build verification.
+
+---
+
+## 5. Workflow Evaluation & Areas for Improvement
+
+### What Worked Exceptionally Well
+1. **Incremental Feature Branching:** Structuring each phase as an isolated git branch (`ex-101` through `ex-106`) allowed atomic commits, clear code reviews, and reproducible verification milestones.
+2. **Developing Tests As You Go:** Adopting Michael Leonard's philosophy from the outset eliminated ambiguity. Defining acceptance criteria (Scenario 1 & Scenario 2) before writing the frontend widget meant the UI components and backend fallbacks were purpose-built to pass tests without requiring speculative rework.
+3. **Pure Function Segregation:** Extracting the pricing math and condition logic into pure functions allowed fast, zero-dependency unit tests running in under 20ms, while integration and journey tests verified full-system behavior.
+4. **Zero-PHP Mandate Adherence:** Using TypeScript and Node.js provided modern end-to-end type safety, fast Vite HMR, and eliminated the critical RCE vulnerabilities commonly plaguing PHP installations.
+5. **Interactive QA Simulator:** Adding the "Simulate Vendor Failure" switch directly inside the UI gives QA engineers and product managers immediate, tactile confirmation of Scenario 2 behavior without needing to mock network traffic via DevTools or Charles Proxy.
+
+### Areas for Future Improvement
+1. **Real Marketplace Scraping / Official Vendor APIs:** Currently, external vendor prices are simulated through the aggregator engine. In a production environment, connecting real-time affiliate APIs (Rogue Affiliate API, eBay Buy API) with Redis caching (5-minute TTL) would minimize rate-limiting while maintaining fresh pricing.
+2. **Image CDN Integration:** Currently, listings use Unsplash fitness equipment URLs. Implementing direct S3 / Cloudflare R2 image uploads with automatic thumbnail resizing (WebP/AVIF) would enhance image loading speeds.
+3. **User Authentication & Saved Searches:** Adding Auth0 or Clerk authentication would allow home gym enthusiasts to set "Price Drop Alerts" when a specific power rack or bumper plate set falls below their target price.
+4. **CI/CD GitHub Actions Pipeline:** Adding a `.github/workflows/ci.yml` workflow that automatically runs `npm test` and `npm run build` on every pull request will ensure long-term regression prevention.
+
+
 
 
 

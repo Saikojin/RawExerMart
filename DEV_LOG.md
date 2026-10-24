@@ -111,4 +111,22 @@ In Michael Leonard's article, the core story used to illustrate the Story Test P
   - Configured Express app with CORS and health-check endpoints.
 - **Verification:** Passed `npx tsc --noEmit` with zero errors and validated REST interface signatures.
 
+### Phase 4: Responsive Frontend Showcase & Marketplace UI
+- **Decision:** Build a responsive, dark-mode, high-craft React 18 interface with Tailwind CSS that makes the gym equipment catalog tactile and transparent.
+- **Git Branch:** `feature/ex-104-frontend-showcase-marketplace`
+- **Actions Taken:**
+  - Implemented `Header` with branding, inventory badge, Story EX-104 test plan button, and database reset trigger.
+  - Built `Hero` section explaining real-time price intelligence and gym equipment liquidation transparency.
+  - Implemented `FilterBar` enabling multi-dimensional slicing: Category (Free weights, Racks & Benches, Cardio, Functional machines, Accessories), Condition (New, Like New, Good, Fair, Refurbished), and Sort ordering.
+  - Built `EquipmentCard` with condition badges, MSRP discount tags, and multi-vendor tracking count.
+  - Created `EquipmentDetailModal` showcasing full high-res imagery, technical specs table, and seller verification credentials.
+  - Implemented `PriceComparisonWidget` directly delivering Story EX-104:
+    - Side-by-side comparison across ExerMart, Rogue, Rep, Titan, eBay.
+    - Prominent "Lowest Price" best deal highlight.
+    - Integrated "Simulate Vendor Failure" toggle to verify Scenario 2 graceful fallback in real-time.
+  - Created `SellEquipmentModal` with live client validation to post new or used equipment.
+  - Implemented `StoryTestPlanDashboard` providing an interactive in-app view of Michael Leonard's test plan template and BDD acceptance criteria.
+- **Verification:** Production bundle built via `vite build client` in 1.74s with zero errors.
+
+
 
